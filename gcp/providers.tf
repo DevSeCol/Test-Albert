@@ -4,7 +4,7 @@ terraform {
     organization = "devops-training"
 
     workspaces {
-      name = "Test-Albert"
+      name = "test-ricardo"
     }
   }
 }
