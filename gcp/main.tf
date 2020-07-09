@@ -8,7 +8,7 @@ resource "google_container_cluster" "primary-cluster" {
 }
 
 resource "google_container_node_pool" "preemptible_nodes" {
-  name       = "primary-pool"
+  name       = "primary-pool-Albert"
   location   = google_container_cluster.primary-cluster.location
   cluster    = google_container_cluster.primary-cluster.name
   node_count = 1
