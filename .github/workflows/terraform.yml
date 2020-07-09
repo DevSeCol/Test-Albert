@@ -82,13 +82,19 @@ jobs:
     - name: Terraform Format
       run: terraform fmt -check
 
-     # Create the service account file
+    # Create the service account file
     - name: Service account activation
       run: echo "${{ secrets.TF_SERVICE_ACCOUNT }}" | base64 -d > TF_SERVICE_ACCOUNT.json
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: "./TF_SERVICE_ACCOUNT.json"
+
+    # Generates an execution plan for Terraform
+    #- name: Terraform Plan
+    #  run: terraform plan
     
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
