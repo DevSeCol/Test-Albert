@@ -23,7 +23,7 @@ resource "google_container_node_pool" "preemptible_nodes" {
       machine-type = "preemtible"
     }
 
-    tags = ["spark-cluster"]
+    tags = ["test-albert"]
 
     metadata = {
       disable-legacy-endpoints = "true"
