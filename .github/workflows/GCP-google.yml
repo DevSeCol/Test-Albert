@@ -11,7 +11,7 @@
 name: Build and Deploy to GKE
 
 on:
-push:
+  push:
     branches:
     - master
   pull_request:
