@@ -1,4 +1,4 @@
 project_id   = "devsecol"
-region       = "us-central1"
+region       = "us-west1-a"
 domain_name  = "app.devsecol.site"
-cluster_name = "test-albert"
+cluster_name = "albert-gke-cluster"
