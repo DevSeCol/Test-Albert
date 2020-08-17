@@ -8,7 +8,7 @@
 #
 # 3. Change the values for the GKE_ZONE, GKE_CLUSTER, IMAGE, REGISTRY_HOSTNAME and DEPLOYMENT_NAME environment variables (below).
 
-name: Build and Deploy to GKE
+name: Build and Deploy to GKE Services
 
 on:
   push:
@@ -26,7 +26,7 @@ env:
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: us-west1-a
   GKE_CLUSTER: albert-gke-cluster
-  IMAGE: albert-gke-test
+  IMAGE: albert-gke-image
   REGISTRY_HOSTNAME: gcr.io
   DEPLOYMENT_NAME: albert-gke-test
 
@@ -75,22 +75,9 @@ jobs:
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
         kubectl apply -f deployment.yaml
         kubectl apply -f clusterip-service.yaml
+        kubectl apply -f nodeport-service.yaml
+        kubectl apply -f loadbalancer-service.yaml
         #kubectl set image deployment/test-deploy nginx-container=$REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
         kubectl get pods
         #kubectl rollout status deployment/$DEPLOYMENT_NAME
         #kubectl get services -o wide  
-
-    # Set up kustomize
-    #- name: Set up Kustomize
-    #  run: |
-    #    curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-    #   chmod u+x ./kustomize
-
-    # Deploy the Docker image to the GKE cluster
-    #- name: Deploy
-     # run: |
-    #    gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
-    #    ./kustomize edit set image $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
-    #    ./kustomize build . | kubectl apply -f -
-    #    kubectl rollout status deployment/$DEPLOYMENT_NAME
-     #   kubectl get services -o wide
