@@ -1,0 +1,7 @@
+bases:
+- ../../base
+namespace: albert-testing
+patchesStrategicMerge:
+- nginx-as-loadbalancer.yaml
+resources:
+  - namespace.yaml

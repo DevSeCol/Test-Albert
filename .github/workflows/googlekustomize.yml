@@ -20,7 +20,7 @@ env:
   GKE_ZONE: us-west1
   GKE_CLUSTER: albert-gke-cluster
   GKE_PREFIX: albert
-  IMAGE: albert-gke-test
+  IMAGE: albert-gke-image
   DEPLOYMENT_NAME: nginx-deployment-albert
   REGISTRY_HOSTNAME: gcr.io
 
