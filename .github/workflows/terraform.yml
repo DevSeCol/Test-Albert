@@ -42,7 +42,7 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform-Cluster-2'
+name: 'Terraform-Cluster-12Sep'
 
 on:
   push:
