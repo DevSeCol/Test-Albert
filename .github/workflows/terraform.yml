@@ -47,8 +47,8 @@ name: 'Terraform-Cluster-16sep'
 on:
   push:
     branches:
-            #- master
-    - cluster
+    - master
+    #- cluster
   pull_request:
 
 jobs:
