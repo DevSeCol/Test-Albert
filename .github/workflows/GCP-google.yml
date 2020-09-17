@@ -13,8 +13,8 @@ name: Build and Deploy to GKE
 on:
   push:
     branches:
-    - services-2
-            #- master
+    #- services-2
+    - master
   pull_request:
 
   
