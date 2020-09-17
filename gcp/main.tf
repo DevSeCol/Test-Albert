@@ -7,6 +7,22 @@ resource "google_container_cluster" "primary-cluster" {
   #subnetwork               = var.cluster_subnetwork
 }
 
+resource "google_compute_autoscaler" "autoscaler-first" {
+  name   = "my-autoscaler"
+  zone   = var.region 
+  #target = google_compute_instance_group_manager.foobar.id
+
+  autoscaling_policy {
+    max_replicas    = 5
+    min_replicas    = 1
+    cooldown_period = 60
+
+    cpu_utilization {
+      target = 0.5
+    }
+  }
+}
+
 resource "google_container_node_pool" "preemptible_nodes" {
   name       = "primary-pool-albert"
   location   = google_container_cluster.primary-cluster.location
