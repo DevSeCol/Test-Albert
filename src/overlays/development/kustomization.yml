@@ -1,0 +1,5 @@
+bases:
+- ../../base
+namespace: "albert-development"
+resources:
+  - namespace.yaml
