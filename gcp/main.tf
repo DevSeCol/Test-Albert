@@ -5,16 +5,6 @@ resource "google_container_cluster" "primary-cluster" {
   initial_node_count       = 1
   #network                  = var.cluster_network
   #subnetwork               = var.cluster_subnetwork
-
-  autoscaling_policy {
-    max_replicas    = 5
-    min_replicas    = 1
-    cooldown_period = 60
-
-  cpu_utilization {
-    target = 0.5
-    }
-  }
 }
 
 resource "google_container_node_pool" "preemptible_nodes" {
