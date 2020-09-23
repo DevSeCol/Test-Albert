@@ -21,7 +21,7 @@ env:
   GKE_CLUSTER: albert-gke-cluster
   GKE_PREFIX: albert
   IMAGE: albert-gke-test-image
-  DEPLOYMENT_NAME: nginx-deployment-albert
+  DEPLOYMENT_NAME: nginx-deployment
   REGISTRY_HOSTNAME: gcr.io
 
 jobs:
